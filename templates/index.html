@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Emotion Music Player</title>
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #8e2de2, #4a00e0);
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+    }
+
+    video {
+      border: 5px solid #fff;
+      border-radius: 12px;
+      width: 80%;
+      max-width: 640px;
+      margin: 20px 0;
+      box-shadow: 0 0 15px rgba(0,0,0,0.3);
+    }
+
+    #emotion {
+      font-size: 1.5rem;
+      margin: 10px 0;
+      font-weight: 600;
+      color: #ffeb3b;
+    }
+
+    audio {
+      margin-top: 20px;
+      width: 80%;
+      max-width: 400px;
+    }
+
+    footer {
+      margin-top: 40px;
+      font-size: 0.9rem;
+      opacity: 0.7;
+    }
+    button {
+    margin: 10px;
+    padding: 10px 20px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 8px;
+    background-color: #ffffff;
+    color: #4a00e0;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+
+  button:hover {
+    background-color: #f0f0f0;
+  }
+  </style>
+</head>
+<body>
+
+  <h1>🎵 Emotion-Based Music Player</h1>
+
+  <video id="webcam" autoplay playsinline></video>
+  
+  <p id="emotion">Detecting emotion...</p>
+
+  <audio id="player" controls autoplay></audio>
+
+  <div>
+    <button onclick="nextSong()">▶️ Next Song</button>
+    <button onclick="detectAgain()">🔁 Detect Again</button>
+  </div>
+
+  <footer>Made with 💜 using Flask + DeepFace</footer>
+
+  <script src="/static/js/script.js"></script>
+</body>
+</html>
