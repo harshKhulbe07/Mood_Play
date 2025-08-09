@@ -4,91 +4,204 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Emotion Music Player</title>
-
-  <!-- Google Font -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
-
   <style>
     body {
       margin: 0;
       padding: 0;
       font-family: 'Poppins', sans-serif;
-      background: linear-gradient(135deg, #8e2de2, #4a00e0);
+      background: linear-gradient(120deg, #0f2027 0%, #2c5364 100%);
       color: #fff;
+      min-height: 100vh;
+      width: 100vw;
+      overflow-x: hidden;
+    }
+
+    .main-layout {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: stretch;
+      height: 100vh;
+      width: 100vw;
+    }
+
+    .left-panel {
+      flex: 1.2;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-end;
+      padding: 0 2vw;
+      background: rgba(44, 83, 100, 0.10);
+    }
+
+    .webcam-container {
       display: flex;
       flex-direction: column;
       align-items: center;
+      width: 95%;
+      max-width: 700px;
+      margin: 0 auto;
+      background: rgba(44, 83, 100, 0.10);
+      border-radius: 24px;
+      box-shadow: 0 8px 32px rgba(44, 83, 100, 0.13);
+      padding: 32px 18px;
+    }
+
+    video {
+      width: 100%;
+      max-width: 650px;
+      min-width: 320px;
+      border-radius: 18px;
+      border: 4px solid #38f9d7;
+      background: #222;
+      box-shadow: 0 0 18px rgba(44, 83, 100, 0.13);
+      margin-bottom: 18px;
+    }
+
+    .right-panel {
+      flex: 0.9;
+      display: flex;
+      flex-direction: column;
       justify-content: center;
-      min-height: 100vh;
-      text-align: center;
+      align-items: flex-start;
+      padding: 0 2vw;
+    }
+
+    .info-box {
+      background: rgba(44, 83, 100, 0.22);
+      border-radius: 20px;
+      padding: 38px 32px 30px 32px;
+      margin-bottom: 24px;
+      min-width: 320px;
+      max-width: 400px;
+      width: 100%;
+      box-shadow: 0 8px 32px rgba(44, 83, 100, 0.16);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
 
     h1 {
       font-size: 2.5rem;
-      margin-bottom: 10px;
+      margin-bottom: 8px;
+      font-weight: 700;
+      color: #43e97b;
+      letter-spacing: 1px;
+      text-shadow: 0 2px 12px rgba(44, 83, 100, 0.12);
     }
 
-    video {
-      border: 5px solid #fff;
-      border-radius: 12px;
-      width: 80%;
-      max-width: 640px;
-      margin: 20px 0;
-      box-shadow: 0 0 15px rgba(0,0,0,0.3);
+    .subtitle {
+      font-size: 1.08em;
+      color: #38f9d7;
+      margin-bottom: 24px;
+      font-weight: 500;
+      letter-spacing: 0.1em;
     }
 
     #emotion {
-      font-size: 1.5rem;
-      margin: 10px 0;
+      font-size: 1.6rem;
+      margin: 20px 0 16px 0;
+      font-weight: 700;
+      color: #43e97b;
+      letter-spacing: 0.5px;
+      text-shadow: 0 1px 8px rgba(67,233,123,0.15);
+      min-height: 2.2em;
+      transition: color 0.2s;
+    }
+
+    .btn-group {
+      margin: 18px 0 10px 0;
+      display: flex;
+      gap: 16px;
+      width: 100%;
+      justify-content: center;
+    }
+
+    button {
+      padding: 12px 26px;
+      font-size: 1.08rem;
+      border: none;
+      border-radius: 10px;
+      background: linear-gradient(90deg, #43e97b 0%, #38f9d7 100%);
+      color: #0f2027;
       font-weight: 600;
-      color: #ffeb3b;
+      cursor: pointer;
+      box-shadow: 0 2px 8px rgba(67,233,123,0.11);
+      transition: background 0.18s, color 0.18s, transform 0.13s;
+      outline: none;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    button:hover, button:focus {
+      background: linear-gradient(90deg, #38f9d7 0%, #43e97b 100%);
+      color: #fff;
+      transform: translateY(-2px) scale(1.04);
     }
 
     audio {
-      margin-top: 20px;
-      width: 80%;
-      max-width: 400px;
+      margin-top: 16px;
+      width: 100%;
+      max-width: 340px;
+      border-radius: 10px;
+      background: #fff;
+      box-shadow: 0 2px 8px rgba(44, 83, 100, 0.08);
     }
 
-    footer {
-      margin-top: 40px;
-      font-size: 0.9rem;
-      opacity: 0.7;
+    .disclaimer {
+      margin-top: 22px;
+      font-size: 0.96em;
+      color: #38f9d7;
+      opacity: 0.78;
+      letter-spacing: 0.02em;
+      text-shadow: 0 1px 8px rgba(44, 83, 100, 0.12);
     }
-    button {
-    margin: 10px;
-    padding: 10px 20px;
-    font-size: 1rem;
-    border: none;
-    border-radius: 8px;
-    background-color: #ffffff;
-    color: #4a00e0;
-    cursor: pointer;
-    transition: background 0.3s ease;
-  }
 
-  button:hover {
-    background-color: #f0f0f0;
-  }
+    @media (max-width: 900px) {
+      .main-layout {
+        flex-direction: column;
+        align-items: center;
+        height: auto;
+      }
+      .left-panel, .right-panel {
+        padding: 0 4vw;
+        width: 100vw;
+        align-items: center;
+      }
+      .info-box {
+        min-width: unset;
+        max-width: 95vw;
+      }
+      .webcam-container {
+        max-width: 98vw;
+        padding: 18px 2vw;
+      }
+    }
   </style>
 </head>
 <body>
-
-  <h1>🎵 Emotion-Based Music Player</h1>
-
-  <video id="webcam" autoplay playsinline></video>
-  
-  <p id="emotion">Detecting emotion...</p>
-
-  <audio id="player" controls autoplay></audio>
-
-  <div>
-    <button onclick="nextSong()">▶️ Next Song</button>
-    <button onclick="detectAgain()">🔁 Detect Again</button>
+  <div class="main-layout">
+    <div class="left-panel">
+      <div class="webcam-container">
+        <video id="webcam" autoplay playsinline></video>
+      </div>
+    </div>
+    <div class="right-panel">
+      <div class="info-box">
+        <h1>🎵 Emotion-Based Music Player</h1>
+        <div class="subtitle">Let your mood pick your music!</div>
+        <div id="emotion">Detecting emotion...</div>
+        <audio id="player" controls autoplay></audio>
+        <div class="btn-group">
+          <button onclick="nextSong()">▶️ Next Song</button>
+          <button onclick="detectAgain()">🔁 Detect Again</button>
+        </div>
+        <div class="disclaimer">Made with 💚 using Flask + DeepFace. No images are stored.</div>
+      </div>
+    </div>
   </div>
-
-  <footer>Made with 💜 using Flask + DeepFace</footer>
-
   <script src="/static/js/script.js"></script>
 </body>
 </html>
