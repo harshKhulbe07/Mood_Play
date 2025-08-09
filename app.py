@@ -74,5 +74,10 @@ def get_random_song(folder_path):
     return os.path.join(folder_path, selected_song).replace("\\", "/")  # for Windows compatibility
 
 
-if __name__ == '__main__':
-    app.run(debug=True)
+# if __name__ == '__main__':
+#     app.run(debug=True)
+
+if __name__ == "__main__":
+    from waitress import serve
+    serve(app, host="0.0.0.0", port=7860)
+

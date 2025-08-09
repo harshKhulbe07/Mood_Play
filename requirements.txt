@@ -8,3 +8,4 @@ tensorflow==2.19.0
 pandas
 numpy
 requests
+waitress==3.0.2
